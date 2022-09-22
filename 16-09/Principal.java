@@ -14,17 +14,16 @@ public class Principal {
 		System.out.print("Digite a matricula: ");		
 		e.setMatricula(sc.nextInt());
 		
-		System.out.print("Digite o nome do Funcionario: ");
-		e.setNome(sc.toString());
-		
 		System.out.print("Digite o salário bruto: ");
 		e.setSal_brut(sc.nextDouble());
 		
 		System.out.print("Digite o Nº de Dependente: ");
 		e.setNum_dependente(sc.nextInt());
 		
+		System.out.print("Digite o nome do Funcionario: ");
+		e.setNome(sc.next());
 		
-		System.out.println(e.toString());
+		e.exibirDados();
 	
 		
 	sc.close();
