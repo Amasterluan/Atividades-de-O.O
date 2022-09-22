@@ -56,11 +56,11 @@ public class Funcionario {
 	public double CalculoIRPF() {
 		double IRPF = 0;
 		
-		if (this.sal_brut > 1201) {
+		if (this.sal_brut > 1200 && this.sal_brut <= 2800 ) {
 			IRPF = (7.5/100)* this.getSal_brut();
-		} else if (this.sal_brut > 2801) {
+		} else if (this.sal_brut > 2800 && this.sal_brut <= 5500) {
 			IRPF = (11/100)* this.getSal_brut();
-		} else if (this.sal_brut > 5501) {
+		} else if (this.sal_brut > 5500) {
 			IRPF = (17.5/100)* this.getSal_brut();
 		}
 		
