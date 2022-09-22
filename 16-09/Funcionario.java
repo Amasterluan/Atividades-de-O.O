@@ -65,7 +65,7 @@ public class Funcionario {
 		}
 		
 	return IRPF;	
-// 
+
 	}
 	
 	public double CalcularINSS () {
