@@ -1,7 +1,6 @@
-package At2;
+package Pack;
 
 public class back {
-
 	private String cpf;
 	private int dia_nasc;
 	private int ano_nasc;
@@ -9,8 +8,6 @@ public class back {
 	private double peso;
 	private String nome;
 
-	
-	
 	public String getCpf() {
 		return cpf;
 	}
@@ -61,74 +58,60 @@ public class back {
 
 	public int Idade() {
 		int idade = 0;
-
-		idade = (2022-this.ano_nasc);
-
+		idade = (2022 - this.ano_nasc);
 		return idade;
 	}
 
-	public void IMC(){
+	public void IMC() {
 		double imc = 0;
-		
-		imc	= peso/(altura*altura);
-		
-				if (imc <= 18.5) {
-					System.out.println("Sua Classificação é de Magreza - " + imc);
-				} else if (imc >= 18.5 && imc <= 24.9) ;{
-					System.out.println("Sua Classificação Está Dentro do Normal - " + imc);
-				} if (imc >= 25.0 && imc <= 29.9) {
-					System.out.println("Sua Classificação é de Sobrepeso I - " + imc);
-				} else if (imc >= 30.0 && imc <= 39.9) {
-					System.out.println("Sua Classificação é Obesidade II - " + imc);
-				} else if (imc >= 40.0 ) {
-					System.out.println("Sua Classificação é Obesidade Grave III - " + imc);
-				}
-		
+		imc = peso / (altura * altura);
+		if (imc <= 18.5) {
+			System.out.println("IMC: Sua Classificação é de Magreza - " + imc);
+		} else if (imc > 18.5 && imc <= 24.9){
+			System.out.println("IMC: Sua Classificação Está Dentro do Normal - " + imc);
+		} else if (imc >= 25.0 && imc <= 29.9) {
+			System.out.println("IMC: Sua Classificação é de Sobrepeso I - " + imc);
+		} else if (imc >= 30.0 && imc <= 39.9) {
+			System.out.println("IMC: Sua Classificação é Obesidade II - " + imc);
+		} else if (imc >= 40.0) {
+			System.out.println("IMC: Sua Classificação é Obesidade Grave III - " + imc);
+		}
 	}
 
-	public String NomeAo(){
-		String nomeaoc;
+	public String NomeAo() {
+		char [] nomeaoc = new char [nome.length()];
+
+		for (int i = nome.length() - 1, j=0; i >= 0; i--, j++){
+			nomeaoc[j] =  nome.charAt(i);
+		}
 		
-		nomeaoc = nome;
-		
-		for(int i = nomeaoc.length()-1; i >= 0; i--) 
-			System.out.print(nomeaoc.charAt(i));
-		
-		return nomeaoc;
-		
+		String naoc = String.valueOf(nomeaoc);
+		return naoc;
+	
 	}
 	
 	
 	public int NumSorte() {
 		String sorte = nome;
-		String [] Vetor = sorte.split(" ");
+		String[] Vetor = sorte.split(" ");
 		int cont = 0;
 		int sort2 = 0;
-		
 		for (int i = 0; i < Vetor.length; i++) {
-			
 			cont = cont + Vetor.length;
 		}
-		
-		sort2 = cont/10 + cont%10;
-		
-		
+		sort2 = cont / 10 + cont % 10;
 		return sort2;
 	}
-	
-	
-	
-	
+
 	public void exibirDados() {
 		System.out.println("======= DADOS DA PESSOA =======");
-		System.out.println("NOME              : " + this.nome);
-		System.out.println("CPF               : " + this.cpf);
-		System.out.println("IDADE             : " + this.Idade());
-		System.out.println("ALTURA            : " + this.altura);
-		System.out.println("PESO              : " + this.peso);
-		System.out.println("IMC               : "); IMC();
+		System.out.println("NOME : " + this.nome);
+		System.out.println("CPF : " + this.cpf);
+		System.out.println("IDADE : " + this.Idade());
+		System.out.println("ALTURA : " + this.altura);
+		System.out.println("PESO : " + this.peso);
+		IMC();
 		System.out.println("NOME AO CONTRARIO : " + this.NomeAo());
-		System.out.println("NÚMERO DA SORTE   : " + this.NumSorte());
+		System.out.println("NÚMERO DA SORTE : " + this.NumSorte());
 	}
-
 }
