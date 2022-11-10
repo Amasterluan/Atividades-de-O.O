@@ -6,12 +6,11 @@ public class Loja {
 
 	private String CNPJ;
 	private String nome;
-	private ArrayList<Proprietario> proprietario;
+	private Proprietario proprietario;
 	private int telefone;
 	private ArrayList<Computador> computadores;
 	
 	public Loja() {
-		this.proprietario = new ArrayList<Proprietario>();
 		this.computadores = new ArrayList<Computador>();		
 	}
 	
@@ -37,8 +36,8 @@ public class Loja {
 	
 	public void listMarca(String marca) {
 		for (int i = 0; i < computadores.size(); i++) {
-			if(computadores.get(i).getMarca()==marca) {
-				
+			if(computadores.get(i).getMarca().equals(marca)) {
+				computadores.get(i).exibirPC();
 			}
 		}
 	}
@@ -61,6 +60,12 @@ public class Loja {
 	}
 	public void setTelefone(int telefone) {
 		this.telefone = telefone;
+	}
+	public Proprietario getProprietario() {
+		return proprietario;
+	}
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
 	}
 	
 	
