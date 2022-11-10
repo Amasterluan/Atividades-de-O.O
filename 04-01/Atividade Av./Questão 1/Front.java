@@ -2,14 +2,13 @@ package Q1;
 
 import java.util.Scanner;
 
-public class front {
+public class Front {
 
 	private static void clearBuffer(Scanner scanner) {
 		if (scanner.hasNextLine()) {
 			scanner.nextLine();
 		}
 	}
-
 
 	public static void main(String[] args) {
 		
@@ -94,9 +93,9 @@ public class front {
 				a.list();
 				System.out.println("======================");
 			}else if(opcao==4) {
+				clearBuffer(sc);
 				System.out.println("Digite a marca do PC para listar: ");
 				String marca = sc.nextLine();
-				clearBuffer(sc);
 				a.listMarca(marca);
 				
 			}else if(opcao==5) {
