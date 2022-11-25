@@ -1,4 +1,4 @@
-package Q2;
+package Q3;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Front {
 		int opcao;
 		
 		Sistema s = new Sistema();
-		Agenda a = new Agenda();
+		
 		
 		System.out.println("Olá, seja bem vindo (a) ao Sistema da Viver Bem Unicorns!");
 		System.out.println(" ");
@@ -32,7 +32,7 @@ public class Front {
 			opcao = sc.nextInt();
 			
 			if(opcao==1) {
-				
+				Agenda a = new Agenda();
 				System.out.println("Digite o codigo da Consulta: ");
 				a.setCodigo(sc.nextInt());
 				
@@ -66,9 +66,17 @@ public class Front {
 				s.list();
 				System.out.println("======================");
 			}else if(opcao==4) {
-				clearBuffer(sc);
-				System.out.println("Digite a data da Consulta: ");
-				String data = sc.nextLine();
+				//clearBuffer(sc);
+				
+				System.out.println("Digite a data das Consultas: ");		
+				System.out.println("Dia: ");
+				int dia= sc.nextInt();
+				System.out.println("Mês: ");
+				int mes = sc.nextInt();
+				System.out.println("Ano: ");
+				int ano = sc.nextInt();
+				
+				s.listData(dia, mes, ano);
 
 				
 			}else if(opcao==5) {
