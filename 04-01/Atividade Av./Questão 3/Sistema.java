@@ -1,4 +1,4 @@
-package Q2;
+package Q3;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,13 +32,13 @@ public class Sistema {
 	
 	
 	
-	//public void listData(LocalDate dia, LocalDate mes, LocalDate ano) {
-	//	for (int i = 0; i < agendas.size(); i++) {
-	//		if(agendas.get(i).equals(LocalDate.from(ano, dia, mes))) {
-	//			agendas.get(i).exibirConsul();
-	//		}
-	//	}
-	//}
+	public void listData(int dia, int mes, int ano) {
+		for (int i = 0; i < agendas.size(); i++) {
+			if(agendas.get(i).equals(LocalDate.of(ano, dia, mes))) {
+				agendas.get(i).exibirConsul();
+			}
+		}
+	}
 	
 	
 }
