@@ -1,33 +1,19 @@
+package Sistema;
 import java.util.ArrayList;
 
-public class Sistema {
+public class SistemaUsuario {
 
 	private ArrayList<Usuario> usuarios;
-	private ArrayList<Livro> livros;
 	
-	public Sistema() {
+	public SistemaUsuario() {
 		
 		this.usuarios = new ArrayList<Usuario>();
-		this.livros = new ArrayList<Livro>();
 		
-	}
-	
-	public void addLivro(Livro livros) {
-		this.livros.add(livros);
-		System.out.println("Livro adicionado!");		
 	}
 	
 	public void addUsuario(Usuario usuarios) {
 		this.usuarios.add(usuarios);
 		System.out.println("Usuario adicionado!");		
-	}
-	
-	public void removeLivro(int codigo) {
-		for (int i =0; i < livros.size(); i++) {
-			if(livros.get(i).getCod()==codigo) {
-				this.livros.remove(i);
-			}
-		}	
 	}
 	
 	public void removeUsuario(int matricula) {
@@ -38,27 +24,12 @@ public class Sistema {
 		}	
 	}
 	
-	//Falta listar em ordem alfabetica e a quantidade de exemplares
-	
-	public void listLivro() {
-		for(Livro livro : livros) {
-			livro.exibirLivro();
-		}
-	}
-	
 	public void listUsuario() {
 		for(Usuario usuario : usuarios) {
 			usuario.exibirUsuario();
 		}
 	}
 	
-	public void listLivro(int codigo) {
-		for (int i = 0; i < livros.size(); i++) {
-			if(livros.get(i).getCod()== codigo) {
-				livros.get(i).exibirLivro();
-			}
-		}
-	}
 	
 	public void listUsuario(int matricula) {
 		for (int i = 0; i < usuarios.size(); i++) {
