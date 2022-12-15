@@ -5,14 +5,14 @@ import java.util.List;
 
 public class SistemaLivro {
 
-	private ArrayList<Usuario> usuarios;
-	private List<Livro> livros;
+	private ArrayList<Livro> livros;
 	
 	public SistemaLivro() {
 		
-		this.livros = new List<Livro>();
+		this.livros = new ArrayList<Livro>();
 		
 	}
+	
 	
 	public void addLivro(Livro livros) {
 		this.livros.add(livros);
@@ -29,23 +29,34 @@ public class SistemaLivro {
 	}
 	
 	
-	//Falta listar em ordem alfabetica e a quantidade de exemplares
+	public static void ListAllLivros(ArrayList<Livro> list) {
+	     sort(list); 
+        for (Livro obj : list) {
+            System.out.println(obj.getTitulo());
+        }
+    }
+ 
+    public static void sort(ArrayList<Livro> list) {
+ 
+        list.sort((o1, o2)
+                  -> o1.getTitulo().compareTo(o2.getTitulo()));
+    }
 	
-	public void listLivro() {
-		ArrayList<Livro> emp = Collections.sort(livros , Livro.getComparatorLivroCresc());
-		
-		for(Livro livro : emp) {
-			livro.exibirLivro();
-		}
-	}
 	
-	
-	public void listLivro(int codigo) {
+	public void listLivroEspefico(int codigo) {
 		for (int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCod()== codigo) {
 				livros.get(i).exibirLivro();
 			}
 		}
+	}
+
+	public ArrayList<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(ArrayList<Livro> livros) {
+		this.livros = livros;
 	}
 	
 
