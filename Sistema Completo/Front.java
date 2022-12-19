@@ -1,109 +1,213 @@
+package Sistema;
+
 import java.util.Scanner;
+
 public class Front {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		Scanner sc=new Scanner(System.in);
-		
-		Sistema s = new Sistema();
-		
-	int opcao = 0;
-		 
-		
-		
+		Scanner sc = new Scanner(System.in);
+
+		Usuario s = new Usuario();
+		SistemaUsuario su = new SistemaUsuario();
+
+		Livro l = new Livro();
+		SistemaLivro sl = new SistemaLivro();
+
+		int opPrincipal = 0;
+		Emprestimo e = new Emprestimo();
+		EmprestarLivro eL = new EmprestarLivro();
 		do {
-			System.out.println("XYZ comercio de produtos LTDA. \nSistema de Controle de Biblioteca.");
-			System.out.println("\nMenu Principal");
-			System.out.println("\n1-Cadastro de Usuário");
-			System.out.println("2-Cadastro de publicações");
-			System.out.println("3-Movimentações");
-			System.out.println("4-Relatórios");
-			System.out.println("0-Finalizar");
-			
-			opcao = sc.nextInt();
-			
-			if(opcao==1) {
-				int op1=0;
-						
+			// MENU PRÍNCIPAL
+			System.out.println("MENU PRINCIPAL: ");
+			System.out.println("\n1- Cadastro de Usuários");
+			System.out.println("2- Cadatro de Publicações");
+			System.out.println("3- Movimentações");
+			System.out.println("0- Finalizar");
+			opPrincipal = sc.nextInt();
+
+			// CADASTROS DE USUÁRIOS SE OP==1
+			if (opPrincipal == 1) {
+				int opCadastroUsuario = 0;
+				System.out.println("\nCADASTROS DE USUÁRIO: ");
+				System.out.println("MENU: ");
 				do {
-				System.out.println("XYZ comercio de produtos LTDA. \nSistema de Controle de Biblioteca.");
-				System.out.println("\nMenu Principal");
-				System.out.println("1- Incluir");
-				System.out.println("2- Listar");
-				System.out.println("3- Consultar");
-				System.out.println("4- Excluir");
-				System.out.println("0- Retornar");
-				
-				
-				
-				Usuario us= new Usuario();
-			
-			switch (op1) {
-			
-			
-			case 1:
-				
-				System.out.println("Digite a Matricula: ");
-				us.setMatricula(sc.nextInt());
-				
-				System.out.println("Digite o nome: ");
-				us.setNome(sc.nextLine());
-				
-				s.addUsuario(us);
-				
-				break;
 
-			case 2:
-	
-				s.listUsuario();
-				
-				break;
+					System.out.println("1-Incluir");
+					System.out.println("2-Listar");
+					System.out.println("3-Consultar");
+					System.out.println("4-Excluir");
+					System.out.println("0-Retornar");
+					opCadastroUsuario = sc.nextInt();
 
-			case 3:
-				System.out.println("Informe a matricula que deseja consultar.");
-				int mat=sc.nextInt();
-				s.listUsuario(mat);
-				
-				break;
-   
-			case 4:
-				System.out.println("informe quem deseja Excluir");
-				int mat=sc.nextInt();
-				s.removeUsuario(mat);
-				System.out.println("\nExcluído");
-				break;
-			
-			default:
-				
-				break;
-				
+					if (opCadastroUsuario == 1) {
+
+						System.out.println("\nINCLUINDO... ");
+						System.out.println("\nInforme o nome do novo usuário:");
+						s.setNome(sc.next());
+						System.out.println("\nInforme a matrícula do novo usuário:");
+						s.setMatricula(sc.nextInt());
+						System.out.println("Deseja realmente incluir?");
+						System.out.println("1-Sim\n2-Não");
+						int confirm1 = sc.nextInt();
+						if (confirm1 == 1) {
+							su.addUsuario(s);
+						} else if (confirm1 == 2) {
+							System.out.println("\nInclusão cancelada!");
+
+						}
+
+					}
+					if (opCadastroUsuario == 2) {
+						System.out.println("\nLISTANDO...");
+						su.listUsuario();
+
+					}
+					if (opCadastroUsuario == 3) {
+						System.out.println("\nCONSULTANDO...");
+						System.out.println("\nInforme a matrícula do usuário que precisa consultar:");
+						int matricula = sc.nextInt();
+						su.listUsuario(matricula);
+						System.out.println("Retornando ao menu de usuario...");
+					}
+					if (opCadastroUsuario == 4) {
+						System.out.println("\nEXCLUÍNDO.");
+						System.out.println("\nInforme a matrícula do usuário que deseja excluir:");
+						int matricula = sc.nextInt();
+						su.removeUsuario(matricula);
+
+					}
+				} while (opCadastroUsuario != 0);
+
 			}
-				}while(op1!=5); 
-			
-			}else if(opcao==2) {
-				System.out.println("Digite o serial do PC:");
-				int serial = sc.nextInt();
-				a.removePC(serial);
+			// CADASTRO DE LIVROS SE OP==2
+			if (opPrincipal == 2) {
+
 				
-			}else if(opcao==3) {
-				System.out.println("===== LISTA DE TODOS OS PC =====");
-				a.list();
-				System.out.println("======================");
-			}else if(opcao==4) {
-				clearBuffer(sc);
-				System.out.println("Digite a marca do PC para listar: ");
-				String marca = sc.nextLine();
-				a.listMarca(marca);
-				
-			}else if(opcao==5) {
-				System.out.println("Saindo do sistema!");
-				break;
-			}else {
-				System.out.println("Opção inválida! Digite novamente!");
+				int opCadastroPublica = 0;
+
+				do {
+					System.out.println("\nCADASTRO DE PUBLICAÇÕES");
+					System.out.println("MENU: ");
+					System.out.println("1-Incluir");
+					System.out.println("2-Listar");
+					System.out.println("3-Consultar");
+					System.out.println("4-Excluir");
+					System.out.println("0-Retornar");
+					opCadastroPublica = sc.nextInt();
+
+					if (opCadastroPublica == 1) {
+
+						System.out.println("\nINCLUÍNDO... ");
+						System.out.println("\nInforme o titúlo da nova publicação:");
+						l.setTitulo(sc.next());
+						
+						System.out.println("\nInforme a Código da nova publicação:");
+						l.setCod(sc.nextInt());
+						
+						System.out.println("\nIforme o autor da nova publicação: ");
+						l.setAutor(sc.next());
+						
+						System.out.println("\nDeseja realmente adicionar? ");
+						System.out.println("1-Sim\n2-Não");
+						int confirm2 = sc.nextInt();
+						if (confirm2 == 1) {
+							sl.addLivro(l);
+						} else if (confirm2 == 2) {
+							System.out.println("\nInclusão cancelada!");
+						}
+
+					}
+					if (opCadastroPublica == 2) {
+						System.out.println("\nLISTANDO...");
+						sl.ListAllLivros(null);
+
+					}
+					if (opCadastroPublica == 3) {
+						System.out.println("\nCONSULTANDO...");
+						System.out.println("\nInforme o código da publicação que precisa consultar:");
+						int codigo = sc.nextInt();
+						sl.listLivroEspefico(codigo);
+
+					}
+					if (opCadastroPublica == 4) {
+						System.out.println("\nEXCLUÍNDO...");
+						System.out.println("\nInforme o código da publicação que deseja excluir:");
+						int codigo = sc.nextInt();
+						
+						sl.removeLivro(codigo);
+
+					}
+				} while (opCadastroPublica != 0);
 			}
-			
-		}while(opcao!=0);
+			// MOVIMENTAÇÕES SE OP==3
+			if (opPrincipal == 3) {
+				System.out.println("MOVIMENTAÇÃO:");
+				System.out.println("MENU:");
+				int opMovimento = 0;
+				do {
+					System.out.println("1-Empréstimo");
+					System.out.println("2-Devolução");
+					System.out.println("0-Retornar");
+					opMovimento = sc.nextInt();
+
+					if (opMovimento == 1) {
+						System.out.println("\nEMPRESTANDO...");
+						System.out.println("\ninformação do livro.");
+						
+						System.out.println("\nCódigo:");
+						int codigoLiv = sc.nextInt();
+						
+						System.out.println("\n\nIdentificação.");
+
+						System.out.println("\nMatrícula:");
+						int matricula = sc.nextInt();
+						
+						//System.out.println("\nPeríodo.");
+						//String periodo = sc.next();
+						
+						System.out.println("Deseja realmente emprestar?\n1-Sim\n2-Não");
+						int confirmaçãoEnprestimo = 0;
+						
+						if (confirmaçãoEnprestimo == 1) {
+							eL.AddEmprestimo(e);
+						} else if (confirmaçãoEnprestimo == 2) {
+							System.out.println("\n Emprestimo cancelado!");
+						} else {
+							System.out.println("\nError");
+						}
+
+					}
+					if (opMovimento == 2) {
+						System.out.println("DEVOLVENDO...");
+						System.out.println("\ninformação do livro.");
+						System.out.println("\nCódigo:");
+						int codigoLiv = sc.nextInt();
+
+						System.out.println("\n\nIdentificação.");
+
+						System.out.println("\nMatrícula:");
+						int matricula = sc.nextInt();
+
+						//System.out.println("\nPeríodo.");
+						//String periodo = sc.next();
+
+						System.out.println("Deseja realmente devolver?\n1-Sim\n2-Não");
+						int confirmaçãodevolucao = 0;
+
+						if (confirmaçãodevolucao == 1) {
+							eL.RemoveEmprestimo(codigoLiv);
+						} else if (confirmaçãodevolucao == 2) {
+							System.out.println("\n Emprestimo cancelado!");
+						} else {
+							System.out.println("\nError");
+						}
+					}
+				} while (opMovimento != 0);
+			}
+		} while (opPrincipal != 0);
+
+		sc.close();
 	}
 
 }
