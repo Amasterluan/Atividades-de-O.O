@@ -39,4 +39,25 @@ public class SistemaUsuario {
 		}
 	}
 	
+	public Usuario usuarioByMatricula(int matricula) {
+		Usuario retorno = null;
+		
+		for (int i = 0; i < usuarios.size(); i++) {
+			if(usuarios.get(i).getMatricula()== matricula) {
+				retorno =  usuarios.get(i);
+			}
+		}
+		return retorno;
+	}
+
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	
+	
 }
