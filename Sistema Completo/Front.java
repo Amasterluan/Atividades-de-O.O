@@ -8,14 +8,12 @@ public class Front {
 
 		Scanner sc = new Scanner(System.in);
 
-		Usuario s = new Usuario();
-		SistemaUsuario su = new SistemaUsuario();
-
-		Livro l = new Livro();
+		
+		SistemaUsuario su = new SistemaUsuario();		
 		SistemaLivro sl = new SistemaLivro();
 
 		int opPrincipal = 0;
-		Emprestimo e = new Emprestimo();
+		
 		EmprestarLivro eL = new EmprestarLivro();
 		do {
 			// MENU PRÍNCIPAL
@@ -41,7 +39,7 @@ public class Front {
 					opCadastroUsuario = sc.nextInt();
 
 					if (opCadastroUsuario == 1) {
-
+						Usuario s = new Usuario();
 						System.out.println("\nINCLUINDO... ");
 						System.out.println("\nInforme o nome do novo usuário:");
 						s.setNome(sc.next());
@@ -57,20 +55,17 @@ public class Front {
 
 						}
 
-					}
-					if (opCadastroUsuario == 2) {
+					}else if (opCadastroUsuario == 2) {
 						System.out.println("\nLISTANDO...");
 						su.listUsuario();
 
-					}
-					if (opCadastroUsuario == 3) {
+					}else if (opCadastroUsuario == 3) {
 						System.out.println("\nCONSULTANDO...");
 						System.out.println("\nInforme a matrícula do usuário que precisa consultar:");
 						int matricula = sc.nextInt();
 						su.listUsuario(matricula);
 						System.out.println("Retornando ao menu de usuario...");
-					}
-					if (opCadastroUsuario == 4) {
+					}else if (opCadastroUsuario == 4) {
 						System.out.println("\nEXCLUÍNDO.");
 						System.out.println("\nInforme a matrícula do usuário que deseja excluir:");
 						int matricula = sc.nextInt();
@@ -97,7 +92,7 @@ public class Front {
 					opCadastroPublica = sc.nextInt();
 
 					if (opCadastroPublica == 1) {
-
+						Livro l = new Livro();
 						System.out.println("\nINCLUÍNDO... ");
 						System.out.println("\nInforme o titúlo da nova publicação:");
 						l.setTitulo(sc.next());
@@ -142,10 +137,11 @@ public class Front {
 			}
 			// MOVIMENTAÇÕES SE OP==3
 			if (opPrincipal == 3) {
-				System.out.println("MOVIMENTAÇÃO:");
-				System.out.println("MENU:");
+				
 				int opMovimento = 0;
 				do {
+					System.out.println("EMPRESTIMO");
+					System.out.println("MENU:");
 					System.out.println("1-Empréstimo");
 					System.out.println("2-Devolução");
 					System.out.println("0-Retornar");
@@ -157,14 +153,18 @@ public class Front {
 						
 						System.out.println("\nCódigo:");
 						int codigoLiv = sc.nextInt();
+						Livro livroEncontrado = sl.livroByCode(codigoLiv);
+						
 						
 						System.out.println("\n\nIdentificação.");
 
 						System.out.println("\nMatrícula:");
 						int matricula = sc.nextInt();
-						
-						//System.out.println("\nPeríodo.");
-						//String periodo = sc.next();
+						Usuario userEncontrado = su.usuarioByMatricula(matricula);
+					
+						Emprestimo e = new Emprestimo();
+						e.setUsuarios(userEncontrado);
+						e.setLivros(livroEncontrado);
 						
 						System.out.println("Deseja realmente emprestar?\n1-Sim\n2-Não");
 						int confirmaçãoEnprestimo = 0;
@@ -180,23 +180,16 @@ public class Front {
 					}
 					if (opMovimento == 2) {
 						System.out.println("DEVOLVENDO...");
-						System.out.println("\ninformação do livro.");
-						System.out.println("\nCódigo:");
-						int codigoLiv = sc.nextInt();
-
-						System.out.println("\n\nIdentificação.");
-
-						System.out.println("\nMatrícula:");
-						int matricula = sc.nextInt();
-
-						//System.out.println("\nPeríodo.");
-						//String periodo = sc.next();
-
+						
+						//ler codigo do emprestimo....
+						int codigoEmprestimo = 0; //Implementar...
+						
+						
 						System.out.println("Deseja realmente devolver?\n1-Sim\n2-Não");
 						int confirmaçãodevolucao = 0;
 
 						if (confirmaçãodevolucao == 1) {
-							eL.RemoveEmprestimo(codigoLiv);
+							eL.RemoveEmprestimo(codigoEmprestimo);
 						} else if (confirmaçãodevolucao == 2) {
 							System.out.println("\n Emprestimo cancelado!");
 						} else {
