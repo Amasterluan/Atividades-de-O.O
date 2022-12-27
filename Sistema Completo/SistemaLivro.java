@@ -50,6 +50,17 @@ public class SistemaLivro {
 			}
 		}
 	}
+	
+	public Livro livroByCode(int codigo) {
+		Livro retorno = null;
+		
+		for (int i = 0; i < livros.size(); i++) {
+			if(livros.get(i).getCod()== codigo) {
+				retorno =  livros.get(i);
+			}
+		}
+		return retorno;
+	}
 
 	public ArrayList<Livro> getLivros() {
 		return livros;
