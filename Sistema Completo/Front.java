@@ -8,12 +8,11 @@ public class Front {
 
 		Scanner sc = new Scanner(System.in);
 
-		
-		SistemaUsuario su = new SistemaUsuario();		
+		SistemaUsuario su = new SistemaUsuario();
 		SistemaLivro sl = new SistemaLivro();
 
 		int opPrincipal = 0;
-		
+
 		EmprestarLivro eL = new EmprestarLivro();
 		do {
 			// MENU PRÍNCIPAL
@@ -55,30 +54,30 @@ public class Front {
 
 						}
 
-					}else if (opCadastroUsuario == 2) {
+					} else if (opCadastroUsuario == 2) {
 						System.out.println("\nLISTANDO...");
 						su.listUsuario();
 
-					}else if (opCadastroUsuario == 3) {
+					} else if (opCadastroUsuario == 3) {
 						System.out.println("\nCONSULTANDO...");
 						System.out.println("\nInforme a matrícula do usuário que precisa consultar:");
 						int matricula = sc.nextInt();
 						su.listUsuario(matricula);
 						System.out.println("Retornando ao menu de usuario...");
-					}else if (opCadastroUsuario == 4) {
+					} else if (opCadastroUsuario == 4) {
 						System.out.println("\nEXCLUÍNDO.");
 						System.out.println("\nInforme a matrícula do usuário que deseja excluir:");
 						int matricula = sc.nextInt();
 						su.removeUsuario(matricula);
-
+					} else {
+						System.out.println("Opção Inválida!");
 					}
 				} while (opCadastroUsuario != 0);
 
 			}
 			// CADASTRO DE LIVROS SE OP==2
-			if (opPrincipal == 2) {
+			else if (opPrincipal == 2) {
 
-				
 				int opCadastroPublica = 0;
 
 				do {
@@ -96,13 +95,13 @@ public class Front {
 						System.out.println("\nINCLUÍNDO... ");
 						System.out.println("\nInforme o titúlo da nova publicação:");
 						l.setTitulo(sc.next());
-						
+
 						System.out.println("\nInforme a Código da nova publicação:");
 						l.setCod(sc.nextInt());
-						
+
 						System.out.println("\nIforme o autor da nova publicação: ");
 						l.setAutor(sc.next());
-						
+
 						System.out.println("\nDeseja realmente adicionar? ");
 						System.out.println("1-Sim\n2-Não");
 						int confirm2 = sc.nextInt();
@@ -112,32 +111,31 @@ public class Front {
 							System.out.println("\nInclusão cancelada!");
 						}
 
-					}
-					if (opCadastroPublica == 2) {
+					} else if (opCadastroPublica == 2) {
 						System.out.println("\nLISTANDO...");
 						sl.ListAllLivros(null);
 
-					}
-					if (opCadastroPublica == 3) {
+					} else if (opCadastroPublica == 3) {
 						System.out.println("\nCONSULTANDO...");
 						System.out.println("\nInforme o código da publicação que precisa consultar:");
 						int codigo = sc.nextInt();
 						sl.listLivroEspefico(codigo);
 
-					}
-					if (opCadastroPublica == 4) {
+					} else if (opCadastroPublica == 4) {
 						System.out.println("\nEXCLUÍNDO...");
 						System.out.println("\nInforme o código da publicação que deseja excluir:");
 						int codigo = sc.nextInt();
-						
+
 						sl.removeLivro(codigo);
 
+					} else {
+						System.out.println("Opção Inválida!");
 					}
 				} while (opCadastroPublica != 0);
 			}
 			// MOVIMENTAÇÕES SE OP==3
-			if (opPrincipal == 3) {
-				
+			else if (opPrincipal == 3) {
+
 				int opMovimento = 0;
 				do {
 					System.out.println("EMPRESTIMO");
@@ -150,25 +148,24 @@ public class Front {
 					if (opMovimento == 1) {
 						System.out.println("\nEMPRESTANDO...");
 						System.out.println("\ninformação do livro.");
-						
+
 						System.out.println("\nCódigo:");
 						int codigoLiv = sc.nextInt();
 						Livro livroEncontrado = sl.livroByCode(codigoLiv);
-						
-						
+
 						System.out.println("\n\nIdentificação.");
 
 						System.out.println("\nMatrícula:");
 						int matricula = sc.nextInt();
 						Usuario userEncontrado = su.usuarioByMatricula(matricula);
-					
+
 						Emprestimo e = new Emprestimo();
 						e.setUsuarios(userEncontrado);
 						e.setLivros(livroEncontrado);
-						
+
 						System.out.println("Deseja realmente emprestar?\n1-Sim\n2-Não");
 						int confirmaçãoEnprestimo = 0;
-						
+
 						if (confirmaçãoEnprestimo == 1) {
 							eL.AddEmprestimo(e);
 						} else if (confirmaçãoEnprestimo == 2) {
@@ -177,15 +174,14 @@ public class Front {
 							System.out.println("\nError");
 						}
 
-					}
-					if (opMovimento == 2) {
-						//ler codigo do emprestimo....
+					} else if (opMovimento == 2) {
+						// ler codigo do emprestimo....
 						System.out.println("DEVOLVENDO...");
-						
+
 						System.out.println("Digite o Código do Emprestimo: ");
 						int codigoEmprestimo = sc.nextInt();
-						
-						System.out.println("Deseja realmente devolver?\n1-Sim\n2-Não");
+
+						System.out.println("Deseja realmente devolver? Digite:\n1- Sim\n 2- Não");
 						int confirmaçãodevolucao = 0;
 
 						if (confirmaçãodevolucao == 1) {
@@ -196,6 +192,8 @@ public class Front {
 						} else {
 							System.out.println("\nError");
 						}
+					} else {
+						System.out.println("Opção Inválida!");
 					}
 				} while (opMovimento != 0);
 			}
