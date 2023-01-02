@@ -142,6 +142,7 @@ public class Front {
 					System.out.println("MENU:");
 					System.out.println("1-Empréstimo");
 					System.out.println("2-Devolução");
+					System.out.println("3-Lista de Emprestimo");
 					System.out.println("0-Retornar");
 					opMovimento = sc.nextInt();
 
@@ -192,6 +193,11 @@ public class Front {
 						} else {
 							System.out.println("\nError");
 						}
+
+					} else if (opMovimento == 3) {
+						// ler codigo do emprestimo....
+						System.out.println("LISTANDO...");
+						eL.ListEmprestimos();
 					} else {
 						System.out.println("Opção Inválida!");
 					}
