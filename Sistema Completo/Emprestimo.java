@@ -4,7 +4,7 @@ public class Emprestimo {
 	private int codigo_emprestimo;
 	private Usuario usuarios;
 	private Livro livros;
-	
+
 	public int getCodigo_emprestimo() {
 		return codigo_emprestimo;
 	}
