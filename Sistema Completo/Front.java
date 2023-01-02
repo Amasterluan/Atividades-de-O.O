@@ -179,17 +179,18 @@ public class Front {
 
 					}
 					if (opMovimento == 2) {
+						//ler codigo do emprestimo....
 						System.out.println("DEVOLVENDO...");
 						
-						//ler codigo do emprestimo....
-						int codigoEmprestimo = 0; //Implementar...
-						
+						System.out.println("Digite o Código do Emprestimo: ");
+						int codigoEmprestimo = sc.nextInt();
 						
 						System.out.println("Deseja realmente devolver?\n1-Sim\n2-Não");
 						int confirmaçãodevolucao = 0;
 
 						if (confirmaçãodevolucao == 1) {
 							eL.RemoveEmprestimo(codigoEmprestimo);
+							System.out.println("Livro devolvido com sucesso!");
 						} else if (confirmaçãodevolucao == 2) {
 							System.out.println("\n Emprestimo cancelado!");
 						} else {
