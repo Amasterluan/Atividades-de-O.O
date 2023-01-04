@@ -160,11 +160,30 @@ public class Front {
 						int matricula = sc.nextInt();
 						Usuario userEncontrado = su.usuarioByMatricula(matricula);
 
+						System.out.println("\n\nData de Emprestimo.");
+						
 						Emprestimo e = new Emprestimo();
+						
+						System.out.println("Dia: ");
+						e.setDia(sc.nextInt());
+						System.out.println("Mês: ");
+						e.setMes(sc.nextInt());
+						System.out.println("Ano: ");
+						e.setAno(sc.nextInt());
+						
+						System.out.println("\n\nData de Devolução.");
+						
+						System.out.println("Dia: ");
+						e.setDia2(sc.nextInt());
+						System.out.println("Mês: ");
+						e.setMes2(sc.nextInt());
+						System.out.println("Ano: ");
+						e.setAno2(sc.nextInt());
+						
 						e.setUsuarios(userEncontrado);
 						e.setLivros(livroEncontrado);
 
-						System.out.println("Deseja realmente emprestar?\n1-Sim\n2-Não");
+						System.out.println("Deseja realmente fazer o emprestimo?\n1-Sim\n2-Não");
 						int confirmaçãoEnprestimo = 0;
 
 						if (confirmaçãoEnprestimo == 1) {
