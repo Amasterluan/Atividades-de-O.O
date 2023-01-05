@@ -100,7 +100,10 @@ public class Emprestimo {
 		
 		LocalDate dataEmprestimo = LocalDate.of(this.getAno(), this.getMes(), this.getDia());
 		LocalDate dataDevolução = LocalDate.of(this.getAno2(), this.getMes2(), this.getDia2());
-		
+				
+		System.out.println("===== EMPRESTIMO =====");
+
+		System.out.println("Código do Emprestimo: " + codigo_emprestimo);
 		this.usuarios.exibirUsuario();
 		this.livros.exibirLivro();
 		System.out.println("Data de Emprestimo: "+ dataEmprestimo);
