@@ -32,14 +32,4 @@ public class EmprestarLivro {
 		}
 	}
 
-	public Emprestimo SearchEmprestimo(int codigo) {
-		Emprestimo retorno = null;
-		for (int i = 0; i < this.emprestimos.size(); i++) {
-			if (this.emprestimos.get(i).getCodigo_emprestimo() == codigo) {
-				retorno = this.emprestimos.get(i);
-			}
-		}
-		return retorno;
-	}
-
 }
